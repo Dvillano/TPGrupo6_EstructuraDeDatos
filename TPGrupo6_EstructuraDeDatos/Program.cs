@@ -33,10 +33,13 @@ namespace TPGrupo6_EstructuraDeDatos
         //Funcion para ingresar los votos
         public static string[] ingresarVotantes(string[] candidatos)
         {
-            string[] votantes = new string[6];
+            Console.WriteLine("Ingrese cantidad de votantes");
+            int cantVotantes = int.Parse(Console.ReadLine());
+
+            string[] votantes = new string[cantVotantes];
             int edad, voto;
             Console.WriteLine("\n\nArranca la votacion\n");
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < votantes.Length; i++)
             {
                 Console.Write("\nIngrese su edad: ");
                 edad = Convert.ToInt32(Console.ReadLine());
@@ -122,7 +125,7 @@ namespace TPGrupo6_EstructuraDeDatos
             string[] votantes = ingresarVotantes(candidatos);
 
             //Parte 3 - Guardar votos en una cola
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < votantes.Length; i++)
             {
                 votos.Enqueue(votantes[i]);
             }
@@ -134,7 +137,7 @@ namespace TPGrupo6_EstructuraDeDatos
 
             //Parte 6 - Validaciones
 
-
+            //Mandar funciones a libreria
         }
     }
 
