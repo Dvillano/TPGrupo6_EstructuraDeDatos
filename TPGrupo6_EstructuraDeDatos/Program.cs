@@ -30,6 +30,7 @@ namespace TPGrupo6_EstructuraDeDatos
             }
         }
 
+        //Funcion para ingresar los votos
         public static string[] ingresarVotantes(string[] candidatos)
         {
             string[] votantes = new string[6];
@@ -126,12 +127,12 @@ namespace TPGrupo6_EstructuraDeDatos
                 votos.Enqueue(votantes[i]);
             }
 
-            //Parte 4 - Contar votos y guardar ganador
+            //Parte 4 - Contar votos y guardar ganador - Pendiente que hacer en caso de empate
             Console.WriteLine("El ganador es: {0}", guardarGanador(votos, candidatos));
 
             //Parte 5 - Mostrar resultados con cantidad de votos y porcentaje, solo puede acceder "Jefe de Mesa"
 
-            //Parte 6 - Menu
+            //Parte 6 - Validaciones
 
 
         }
