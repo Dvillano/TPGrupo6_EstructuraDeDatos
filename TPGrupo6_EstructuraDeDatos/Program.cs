@@ -61,23 +61,73 @@ namespace TPGrupo6_EstructuraDeDatos
             return votantes;
         }
 
+        //Contar votos y guardar ganador
+        static string guardarGanador(Queue<string> votos, string[] candidatos)
+        {
+            string ganador = string.Empty;
+            int candidato1 = 0;
+            int candidato2 = 0;
+            int candidato3 = 0;
+
+            for (int i = 0; i < votos.Count; i++)
+            {
+                if (votos.Contains(candidatos[0]))
+                {
+                    candidato1 += 1;
+                }
+
+                if (votos.Contains(candidatos[1]))
+                {
+                    candidato2 += 1;
+                }
+
+                if (votos.Contains(candidatos[2]))
+                {
+                    candidato3 += 1;
+                }
+            }
+
+            if(candidato1 > candidato2)
+            {
+                if (candidato1 > candidato3)
+                {
+                    ganador = candidatos[0];
+                }
+                else
+                {
+                    ganador = candidatos[2];
+                }
+            }
+            else if (candidato2 > candidato3)
+            {
+                ganador = candidatos[1];
+            }
+            else
+            {
+                ganador = candidatos[2];
+            }
+
+            return ganador;
+        }
+
         static void Main(string[] args)
         {
-            Queue<string> cola = new Queue<string>();
+            Queue<string> votos = new Queue<string>();
             //Parte 1 - Guardar candidatos
             string[] candidatos = GuardarCandidatos();
             MostrarCandidatos(candidatos);
 
-            //Parte 2 - Ingresar votos
+            //Parte 2 - Ingresar votos - Pendiente cambiar el numero de votantes
             string[] votantes = ingresarVotantes(candidatos);
 
             //Parte 3 - Guardar votos en una cola
             for (int i = 0; i < 6; i++)
             {
-                cola.Enqueue(votantes[i]);
+                votos.Enqueue(votantes[i]);
             }
 
             //Parte 4 - Contar votos y guardar ganador
+            Console.WriteLine("El ganador es: {0}", guardarGanador(votos, candidatos));
 
             //Parte 5 - Mostrar resultados con cantidad de votos y porcentaje, solo puede acceder "Jefe de Mesa"
 
