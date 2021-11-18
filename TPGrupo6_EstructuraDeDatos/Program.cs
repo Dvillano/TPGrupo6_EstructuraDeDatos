@@ -75,6 +75,7 @@ namespace TPGrupo6_EstructuraDeDatos
             int candidato3 = 0;
             int cantidadVotantes = votos.Count;
 
+            int[] listaVotos = new int[votos.Count];
 
             for (int i = 0; i < cantidadVotantes; i++)
             {
@@ -117,13 +118,8 @@ namespace TPGrupo6_EstructuraDeDatos
                 ganador = candidatos[2];
             }
 
-            //En caso de empate
-            if (candidato1 == candidato2 || candidato1 == candidato2 || candidato2 == candidato3)
-            {
-                return string.Empty;
-            }
-
             return ganador;
+
         }
 
         static void Main(string[] args)
@@ -145,14 +141,7 @@ namespace TPGrupo6_EstructuraDeDatos
 
             //Parte 4 - Contar votos y guardar ganador - Pendiente que hacer en caso de empate
             string candidatoGanador = guardarGanador(votos, candidatos);
-            if (candidatoGanador != string.Empty)
-            {
-                Console.WriteLine("El ganador es: {0}", candidatoGanador);
-            }
-            else
-            {
-                Console.WriteLine("La votacion termino en empate, deben votar nuevamente");
-            }
+            Console.WriteLine("El ganador es: {0}", candidatoGanador);
 
             //Parte 5 - Mostrar resultados con cantidad de votos y porcentaje, solo puede acceder "Jefe de Mesa"
 
