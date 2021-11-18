@@ -67,15 +67,44 @@ namespace TPGrupo6_EstructuraDeDatos
         }
 
         //Contar votos y guardar ganador
-        static string guardarGanador(Queue<string> votos, string[] candidatos)
+        static string guardarGanador(string[] candidatos)
         {
             string ganador = string.Empty;
             int candidato1 = 0;
             int candidato2 = 0;
             int candidato3 = 0;
+
+            if (candidato1 > candidato2)
+            {
+                if (candidato1 > candidato3)
+                {
+                    ganador = candidatos[0];
+                }
+                else
+                {
+                    ganador = candidatos[2];
+                }
+            }
+            else if (candidato2 > candidato3)
+            {
+                ganador = candidatos[1];
+            }
+            return ganador;
+
+        }
+
+
+        //Mostrar resultados por cantidad de votos y porcentaje general para cada candidato
+
+        static int Resultado(Queue<string> votos, string[] candidatos)
+        {
+
+            int mostrarResul;
+            int candidato1 = 0, candidato2 = 0, candidato3 = 0;
             int cantidadVotantes = votos.Count;
+            double oc1, oc2, oc3;
 
-
+            Console.WriteLine(votos.Peek());
             for (int i = 0; i < cantidadVotantes; i++)
             {
                 if (votos.Peek() == candidatos[0])
@@ -97,27 +126,19 @@ namespace TPGrupo6_EstructuraDeDatos
                 }
             }
 
-            if(candidato1 > candidato2)
-            {
-                if (candidato1 > candidato3)
-                {
-                    ganador = candidatos[0];
-                }
-                else
-                {
-                    ganador = candidatos[2];
-                }
-            }
-            else if (candidato2 > candidato3)
-            {
-                ganador = candidatos[1];
-            }
-            else
-            {
-                ganador = candidatos[2];
-            }
+            Console.WriteLine("\nEl candidato {0} recibio {1} votos", candidatos[0], candidato1);
+            Console.WriteLine("\nEl candidato {0} recibio {1} votos", candidatos[1], candidato2);
+            Console.WriteLine("\nEl candidato {0} recibio {1} votos", candidatos[2], candidato3);
 
-            return ganador;
+            mostrarResul = candidato1 + candidato2 + candidato3;
+            oc1 = candidato1 * 100 / mostrarResul;
+            oc2 = candidato2 * 100 / mostrarResul;
+            oc3 = candidato3 * 100 / mostrarResul;
+            Console.WriteLine("\nEl porcentaje de votos para el candidato {0} es de {1}%", candidatos[0], oc1);
+            Console.WriteLine("\nEl porcentaje de votos para el candidato {0} es de {1}%", candidatos[1], oc2);
+            Console.WriteLine("\nEl porcentaje de votos para el candidato {0} es de {1}%\n", candidatos[2], oc3);
+
+            return mostrarResul;
 
         }
 
@@ -139,14 +160,11 @@ namespace TPGrupo6_EstructuraDeDatos
 
 
             //Parte 4 - Contar votos y guardar ganador - Pendiente que hacer en caso de empate
-            string candidatoGanador = guardarGanador(votos, candidatos);
-            Console.WriteLine("El ganador es: {0}", candidatoGanador);
+            //string candidatoGanador = guardarGanador(votos, candidatos);
+            Console.Write("El ganador es: {0}", guardarGanador(candidatos));
 
             //Parte 5 - Mostrar resultados con cantidad de votos y porcentaje, solo puede acceder "Jefe de Mesa"
-
-            //Parte 6 - Validaciones
-
-            //Mandar funciones a libreria
+            Console.Write("La cantidad de votos totales es de: {0}\n", Resultado(votos, candidatos));
         }
     }
 
