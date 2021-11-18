@@ -149,7 +149,7 @@ namespace TPGrupo6_EstructuraDeDatos
             string[] candidatos = GuardarCandidatos();
             MostrarCandidatos(candidatos);
 
-            //Parte 2 - Ingresar votos - Pendiente cambiar el numero de votantes
+            //Parte 2 - Ingresar votos
             string[] votantes = ingresarVotantes(candidatos);
 
             //Parte 3 - Guardar votos en una cola
@@ -158,12 +158,10 @@ namespace TPGrupo6_EstructuraDeDatos
                 votos.Enqueue(votantes[i]);
             }
 
-
-            //Parte 4 - Contar votos y guardar ganador - Pendiente que hacer en caso de empate
-            //string candidatoGanador = guardarGanador(votos, candidatos);
+            //Parte 4 - Contar votos y guardar ganador 
             Console.Write("El ganador es: {0}", guardarGanador(candidatos));
 
-            //Parte 5 - Mostrar resultados con cantidad de votos y porcentaje, solo puede acceder "Jefe de Mesa"
+            //Parte 5 - Mostrar resultados con cantidad de votos y porcentaje
             Console.Write("La cantidad de votos totales es de: {0}\n", Resultado(votos, candidatos));
         }
     }
