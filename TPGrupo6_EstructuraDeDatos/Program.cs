@@ -117,6 +117,12 @@ namespace TPGrupo6_EstructuraDeDatos
                 ganador = candidatos[2];
             }
 
+            //En caso de empate
+            if (candidato1 == candidato2 || candidato1 == candidato2 || candidato2 == candidato3)
+            {
+                return string.Empty;
+            }
+
             return ganador;
         }
 
@@ -138,7 +144,15 @@ namespace TPGrupo6_EstructuraDeDatos
 
 
             //Parte 4 - Contar votos y guardar ganador - Pendiente que hacer en caso de empate
-            Console.WriteLine("El ganador es: {0}", guardarGanador(votos, candidatos));
+            string candidatoGanador = guardarGanador(votos, candidatos);
+            if (candidatoGanador != string.Empty)
+            {
+                Console.WriteLine("El ganador es: {0}", candidatoGanador);
+            }
+            else
+            {
+                Console.WriteLine("La votacion termino en empate, deben votar nuevamente");
+            }
 
             //Parte 5 - Mostrar resultados con cantidad de votos y porcentaje, solo puede acceder "Jefe de Mesa"
 
