@@ -38,6 +38,7 @@ namespace TPGrupo6_EstructuraDeDatos
 
             string[] votantes = new string[cantVotantes];
             int edad, voto;
+
             Console.WriteLine("\n\nArranca la votacion\n");
             for (int i = 0; i < votantes.Length; i++)
             {
@@ -72,22 +73,27 @@ namespace TPGrupo6_EstructuraDeDatos
             int candidato1 = 0;
             int candidato2 = 0;
             int candidato3 = 0;
+            int cantidadVotantes = votos.Count;
 
-            for (int i = 0; i < votos.Count; i++)
+
+            for (int i = 0; i < cantidadVotantes; i++)
             {
-                if (votos.Contains(candidatos[0]))
+                if (votos.Peek() == candidatos[0])
                 {
                     candidato1 += 1;
+                    votos.Dequeue();
                 }
 
-                if (votos.Contains(candidatos[1]))
+                else if (votos.Peek() == (candidatos[1]))
                 {
                     candidato2 += 1;
+                    votos.Dequeue();
                 }
 
-                if (votos.Contains(candidatos[2]))
+                else if (votos.Peek() == (candidatos[2]))
                 {
                     candidato3 += 1;
+                    votos.Dequeue();
                 }
             }
 
@@ -129,6 +135,7 @@ namespace TPGrupo6_EstructuraDeDatos
             {
                 votos.Enqueue(votantes[i]);
             }
+
 
             //Parte 4 - Contar votos y guardar ganador - Pendiente que hacer en caso de empate
             Console.WriteLine("El ganador es: {0}", guardarGanador(votos, candidatos));
