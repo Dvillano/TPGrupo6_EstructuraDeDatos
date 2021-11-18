@@ -75,7 +75,6 @@ namespace TPGrupo6_EstructuraDeDatos
             int candidato3 = 0;
             int cantidadVotantes = votos.Count;
 
-            int[] listaVotos = new int[votos.Count];
 
             for (int i = 0; i < cantidadVotantes; i++)
             {
